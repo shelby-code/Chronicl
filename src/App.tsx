@@ -12,7 +12,7 @@ export default function App() {
     <BrowserRouter>
       <div className="grain flex min-h-screen bg-[#0a0a0a]">
         <Sidebar />
-        <main className="flex-1 min-w-0 md:ml-0">
+        <main className="flex-1 min-w-0 pt-14 md:pt-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/civilization/:id" element={<CivilizationDetail />} />

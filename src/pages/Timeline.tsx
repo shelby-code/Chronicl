@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { civilizations } from '../data/civilizations'
+import SEO from '../components/SEO'
 
 interface TimelineEvent {
   year: string
@@ -40,7 +41,13 @@ export default function Timeline() {
   let lastEra = ''
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] px-6 py-14 md:px-10">
+    <>
+    <SEO
+      title="Global Timeline"
+      description={`${allEvents.length} historical events across ${civilizations.length} civilizations, sorted chronologically from the ancient world to the modern age.`}
+      path="/timeline"
+    />
+    <div className="min-h-screen bg-[#0a0a0a] px-4 py-10 md:px-10 md:py-14">
       <div className="max-w-2xl mx-auto">
 
         {/* Header */}
@@ -124,5 +131,6 @@ export default function Timeline() {
         </div>
       </div>
     </div>
+    </>
   )
 }

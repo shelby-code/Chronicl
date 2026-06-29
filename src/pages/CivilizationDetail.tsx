@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getCivilizationById } from '../data/civilizations'
+import SEO from '../components/SEO'
 
 const TIMELINE_ICONS = ['🏛️', '⚔️', '🌿', '📜', '🔥']
 
@@ -41,6 +42,12 @@ export default function CivilizationDetail() {
   const legacy: string = (civ as any).legacy ?? ''
 
   return (
+    <>
+    <SEO
+      title={civ.name}
+      description={`${civ.tagline} Explore the story, timeline, and achievements of the ${civ.name}.`}
+      path={`/civilization/${civ.id}`}
+    />
     <div className="min-h-screen bg-[#0a0a0a]">
 
       {/* ── HERO ────────────────────────────────────────── */}
@@ -301,5 +308,6 @@ export default function CivilizationDetail() {
         </Link>
       </div>
     </div>
+    </>
   )
 }

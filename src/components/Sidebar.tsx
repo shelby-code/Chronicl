@@ -77,7 +77,7 @@ export default function Sidebar() {
           w-56 border-r border-white/[0.06]
           transform transition-transform duration-300 ease-in-out
           ${open ? 'translate-x-0' : '-translate-x-full'}
-          md:translate-x-0 md:static md:h-screen
+          md:translate-x-0 md:sticky md:top-0 md:h-screen md:shrink-0
         `}
         style={{
           background: 'linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%)',

@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getCountryById } from '../data/countries'
+import SEO from '../components/SEO'
 
 const TIMELINE_ICONS = ['🏛️', '⚔️', '🌿', '📜', '🔥']
 
@@ -41,6 +42,12 @@ export default function CountryDetail() {
   const languages = Array.isArray(country.languages) ? country.languages.join(', ') : country.languages
 
   return (
+    <>
+    <SEO
+      title={country.name}
+      description={`${country.tagline} Explore the history, timeline, and achievements of ${country.name}.`}
+      path={`/country/${country.id}`}
+    />
     <div className="min-h-screen bg-[#0a0a0a]">
 
       {/* ── HERO ────────────────────────────────────────── */}
@@ -315,5 +322,6 @@ export default function CountryDetail() {
         </Link>
       </div>
     </div>
+    </>
   )
 }

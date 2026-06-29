@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { countries, countryRegions } from '../data/countries'
 import CountryCard from '../components/CountryCard'
+import SEO from '../components/SEO'
 
 export default function Countries() {
   const [query, setQuery] = useState('')
@@ -23,7 +24,13 @@ export default function Countries() {
   }, [query, activeRegion])
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] px-6 py-14 md:px-10">
+    <>
+    <SEO
+      title="Countries"
+      description="Explore the histories of 49 nations across 6 regions — Africa, Americas, Asia, Europe, Middle East, and Oceania — through narrative prose and timelines."
+      path="/countries"
+    />
+    <div className="min-h-screen bg-[#0a0a0a] px-4 py-10 md:px-10 md:py-14">
 
       {/* Hero */}
       <div className="max-w-2xl mx-auto text-center mb-14 fade-up-1">
@@ -171,5 +178,6 @@ export default function Countries() {
         </div>
       )}
     </div>
+    </>
   )
 }
