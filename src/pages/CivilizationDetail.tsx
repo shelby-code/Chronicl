@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getCivilizationById } from '../data/civilizations'
 import SEO from '../components/SEO'
+import ShareButton from '../components/ShareButton'
 
 const TIMELINE_ICONS = ['🏛️', '⚔️', '🌿', '📜', '🔥']
 
@@ -69,16 +70,23 @@ export default function CivilizationDetail() {
         />
 
         <div className="relative max-w-4xl mx-auto px-6 md:px-10 pt-10 pb-14">
-          {/* Back */}
-          <button
-            onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 text-sm text-[#9ca3af]/60 hover:text-[#9ca3af] transition-colors mb-10 group"
-          >
-            <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Atlas
-          </button>
+          {/* Back + Share row */}
+          <div className="flex items-center justify-between mb-10">
+            <button
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center gap-2 text-sm text-[#9ca3af]/60 hover:text-[#9ca3af] transition-colors group"
+            >
+              <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Atlas
+            </button>
+            <ShareButton
+              title={civ.name}
+              description={civ.tagline}
+              path={`/civilization/${civ.id}`}
+            />
+          </div>
 
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-2 mb-5 fade-up-1">

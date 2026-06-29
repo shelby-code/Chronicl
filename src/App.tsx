@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
+import EmailCapture from './components/EmailCapture'
 import Home from './pages/Home'
 import CivilizationDetail from './pages/CivilizationDetail'
 import Compare from './pages/Compare'
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/timeline" element={<Timeline />} />
           </Routes>
         </main>
+        <EmailCapture />
       </div>
     </BrowserRouter>
   )

@@ -131,8 +131,28 @@ export default function Sidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="px-5 py-5">
+        <div className="px-4 py-5">
           <div className="h-px bg-white/[0.06] mb-4" />
+          {/* Email CTA */}
+          <a
+            href="mailto:?subject=Chronicl — Weekly History Stories"
+            onClick={(e) => {
+              e.preventDefault()
+              // Trigger the global email modal by dispatching a custom event
+              window.dispatchEvent(new CustomEvent('chronicl:show-email'))
+            }}
+            className="flex items-center gap-2.5 w-full rounded-xl px-3 py-2.5 mb-3 border transition-all duration-150 hover:border-[#D4A017]/30 group"
+            style={{ background: 'rgba(212,160,23,0.06)', borderColor: 'rgba(212,160,23,0.12)' }}
+          >
+            <svg className="w-3.5 h-3.5 shrink-0 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <div>
+              <p className="text-[11px] font-semibold text-[#D4A017] leading-none mb-0.5">Weekly stories</p>
+              <p className="text-[10px] text-[#9ca3af]/50 leading-none">Free newsletter</p>
+            </div>
+          </a>
           <p className="text-[10px] text-[#9ca3af]/30">© 2025 Chronicl</p>
         </div>
       </aside>
