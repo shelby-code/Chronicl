@@ -109,7 +109,7 @@ export default function Countries() {
               <button
                 key={region}
                 onClick={() => setActiveRegion(region)}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[12px] font-medium transition-all duration-150"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-[12px] font-medium transition-all duration-150 whitespace-nowrap"
                 style={isActive ? {
                   background: 'rgba(212,160,23,0.15)',
                   border: '1px solid rgba(212,160,23,0.35)',
