@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "chronicl",
+      "runtimeExecutable": "/opt/homebrew/Cellar/node/26.4.0/bin/npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173,
+      "autoPort": true
+    }
+  ]
+}
