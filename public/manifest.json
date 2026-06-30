@@ -1,0 +1,21 @@
+{
+  "name": "Chronicl — World History Atlas",
+  "short_name": "Chronicl",
+  "description": "Explore the civilizations and nations that shaped our world through narrative prose and timelines.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#D4A017",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ]
+}

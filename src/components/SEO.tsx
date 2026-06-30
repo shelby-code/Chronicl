@@ -26,11 +26,15 @@ export default function SEO({ title, description, path = '' }: SEOProps) {
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={desc} />
       <meta property="og:site_name" content="Chronicl" />
+      <meta property="og:image" content={`${BASE_URL}/og.svg`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={desc} />
+      <meta name="twitter:image" content={`${BASE_URL}/og.svg`} />
     </Helmet>
   )
 }

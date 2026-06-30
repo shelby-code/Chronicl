@@ -42,8 +42,9 @@ function parseYear(y: string): number {
 
 export default function Compare() {
   const [searchParams] = useSearchParams()
-  const [mode, setMode] = useState<Mode>('civilizations')
-  const [id1, setId1] = useState(searchParams.get('civ1') ?? '')
+  const hasCountry1 = !!searchParams.get('country1')
+  const [mode, setMode] = useState<Mode>(hasCountry1 ? 'countries' : 'civilizations')
+  const [id1, setId1] = useState(searchParams.get('civ1') ?? searchParams.get('country1') ?? '')
   const [id2, setId2] = useState('')
 
   // Reset selections when mode changes

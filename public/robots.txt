@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chronicl-bice.vercel.app/sitemap.xml

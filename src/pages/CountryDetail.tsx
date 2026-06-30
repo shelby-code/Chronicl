@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { getCountryById } from '../data/countries'
+import { getCountryById, countries } from '../data/countries'
 import SEO from '../components/SEO'
 import ShareButton from '../components/ShareButton'
 
@@ -301,6 +301,57 @@ export default function CountryDetail() {
             </div>
           </section>
         )}
+
+        {/* ── RELATED COUNTRIES ── */}
+        {(() => {
+          const related = (countries as any[])
+            .filter((c) => c.id !== country.id && c.region === country.region)
+            .slice(0, 3)
+          if (!related.length) return null
+          return (
+            <section className="mb-10 fade-up">
+              <SectionLabel>More from {country.region}</SectionLabel>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {related.map((c: any) => (
+                  <Link
+                    key={c.id}
+                    to={`/country/${c.id}`}
+                    className="group flex items-center gap-3 rounded-xl p-3.5 border transition-all duration-200 hover:-translate-y-0.5"
+                    style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.06)' }}
+                  >
+                    <span className="text-2xl leading-none shrink-0">{c.flag}</span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#f0f0f0] group-hover:text-white truncate">{c.name}</p>
+                      <p className="text-[11px] text-[#9ca3af]/50 truncate">{c.capital}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )
+        })()}
+
+        {/* ── COMPARE CTA ── */}
+        <Link
+          to={`/compare?country1=${country.id}`}
+          className="group flex items-center justify-between w-full rounded-2xl px-6 py-5 border transition-all duration-200 hover:border-[#D4A017]/30 mb-4"
+          style={{ background: 'rgba(212,160,23,0.05)', borderColor: 'rgba(212,160,23,0.15)' }}
+        >
+          <div>
+            <p className="text-sm font-semibold text-[#f0f0f0] mb-0.5">
+              Compare {country.name} with another country
+            </p>
+            <p className="text-xs text-[#9ca3af]/60">Side-by-side stats, timelines, and legacy</p>
+          </div>
+          <div
+            className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 ml-4 transition-transform duration-200 group-hover:translate-x-1"
+            style={{ background: 'rgba(212,160,23,0.15)' }}
+          >
+            <svg className="w-4 h-4 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </Link>
 
         {/* ── BACK CTA ── */}
         <Link

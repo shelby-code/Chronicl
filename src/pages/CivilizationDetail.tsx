@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { getCivilizationById } from '../data/civilizations'
+import { getCivilizationById, civilizations } from '../data/civilizations'
 import SEO from '../components/SEO'
 import ShareButton from '../components/ShareButton'
 
@@ -287,6 +287,39 @@ export default function CivilizationDetail() {
             </div>
           </section>
         )}
+
+        {/* ── RELATED CIVILIZATIONS ── */}
+        {(() => {
+          const related = (civilizations as any[])
+            .filter((c) => c.id !== civ.id && c.era === civ.era)
+            .slice(0, 3)
+          const fallback = (civilizations as any[])
+            .filter((c) => c.id !== civ.id)
+            .slice(0, 3)
+          const items = related.length >= 2 ? related : fallback
+          return (
+            <section className="mb-10 fade-up">
+              <SectionLabel>Explore More Civilizations</SectionLabel>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {items.map((c: any) => (
+                  <Link
+                    key={c.id}
+                    to={`/civilization/${c.id}`}
+                    className="group rounded-xl p-3.5 border transition-all duration-200 hover:-translate-y-0.5"
+                    style={{ background: '#141414', borderColor: 'rgba(255,255,255,0.06)' }}
+                  >
+                    <div
+                      className="w-6 h-0.5 mb-2 rounded-full"
+                      style={{ background: c.color ?? '#D4A017' }}
+                    />
+                    <p className="text-sm font-semibold text-[#f0f0f0] group-hover:text-white mb-0.5">{c.name}</p>
+                    <p className="text-[11px] text-[#9ca3af]/50">{c.era}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )
+        })()}
 
         {/* ── COMPARE CTA ── */}
         <Link
