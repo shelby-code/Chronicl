@@ -48,11 +48,23 @@ export default function EmailCapture() {
     e.preventDefault()
     if (!email) return
     setLoading(true)
-    // TODO: wire to Mailchimp/ConvertKit API endpoint
-    await new Promise((r) => setTimeout(r, 800))
-    setLoading(false)
-    setSubmitted(true)
-    sessionStorage.setItem(STORAGE_KEY, '1')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (!res.ok) {
+        const data = await res.json() as any
+        throw new Error(data.error ?? 'Subscription failed')
+      }
+      setSubmitted(true)
+      sessionStorage.setItem(STORAGE_KEY, '1')
+    } catch (err: any) {
+      alert(err.message ?? 'Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (!visible) return null
